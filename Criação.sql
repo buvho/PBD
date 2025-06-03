@@ -44,7 +44,7 @@ CREATE TABLE `cliente` (
 CREATE TABLE `reserva` (
   `IdReserva` int(11) NOT NULL,
   `IdProfissional` int(11) NOT NULL,
-  `IdService` int(11) NOT NULL,
+  `IdServico` int(11) NOT NULL,
   `IdCliente` int(11) NOT NULL,
   `IdPagamento` int(11) NOT NULL,
   `HarfarbaDehiato` datetime NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE `pagamento` (
 CREATE TABLE `lugarfila` (
   `IdLugarFila` int(11) NOT NULL,
   `IdCliente` int(11) NOT NULL,
-  `IdService` int(11) NOT NULL,
+  `IdServico` int(11) NOT NULL,
   `HaraDaChegada` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -84,7 +84,7 @@ CREATE TABLE `lugarfila` (
 
 CREATE TABLE `profissional` (
   `IdProfissional` int(11) NOT NULL,
-  `IdService` int(11) NOT NULL,
+  `IdServico` int(11) NOT NULL,
   `Nome` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Cellular` varchar(20) NOT NULL,
@@ -146,12 +146,12 @@ CREATE TABLE `pacote` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `pacote_service`
+-- Estrutura para tabela `pacote_servico`
 --
 
-CREATE TABLE `pacote_service` (
+CREATE TABLE `pacote_servico` (
   `IdPacote` int(11) NOT NULL,
-  `IdService` int(11) NOT NULL
+  `IdServico` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -170,7 +170,7 @@ ALTER TABLE `cliente`
 ALTER TABLE `reserva`
   ADD PRIMARY KEY (`IdReserva`),
   ADD KEY `IdProfissional` (`IdProfissional`),
-  ADD KEY `IdService` (`IdService`),
+  ADD KEY `IdServico` (`IdServico`),
   ADD KEY `IdCliente` (`IdCliente`),
   ADD KEY `IdPagamento` (`IdPagamento`);
 
@@ -186,14 +186,14 @@ ALTER TABLE `pagamento`
 ALTER TABLE `lugarfila`
   ADD PRIMARY KEY (`IdLugarFila`),
   ADD KEY `IdCliente` (`IdCliente`),
-  ADD KEY `IdService` (`IdService`);
+  ADD KEY `IdServico` (`IdServico`);
 
 --
 -- Índices de tabela `profissional`
 --
 ALTER TABLE `profissional`
   ADD PRIMARY KEY (`IdProfissional`),
-  ADD KEY `IdService` (`IdService`);
+  ADD KEY `IdServico` (`IdServico`);
 
 --
 -- Índices de tabela `especialidade_profissional`
@@ -223,11 +223,11 @@ ALTER TABLE `pacote`
   ADD PRIMARY KEY (`IdPacote`);
 
 --
--- Índices de tabela `pacote_service`
+-- Índices de tabela `pacote_servico`
 --
-ALTER TABLE `pacote_service`
-  ADD PRIMARY KEY (`IdPacote`,`IdService`),
-  ADD KEY `IdService` (`IdService`);
+ALTER TABLE `pacote_servico`
+  ADD PRIMARY KEY (`IdPacote`,`IdServico`),
+  ADD KEY `IdServico` (`IdServico`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -288,9 +288,9 @@ ALTER TABLE `pacote`
   MODIFY `IdPacote` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `pacote_service`
+-- AUTO_INCREMENT de tabela `pacote_servico`
 --
-ALTER TABLE `pacote_service`
+ALTER TABLE `pacote_servico`
   MODIFY `IdPacote` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -302,7 +302,7 @@ ALTER TABLE `pacote_service`
 --
 ALTER TABLE `reserva`
   ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`IdProfissional`) REFERENCES `profissional` (`IdProfissional`),
-  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`IdService`) REFERENCES `servico` (`IdServico`),
+  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`IdServico`) REFERENCES `servico` (`IdServico`),
   ADD CONSTRAINT `reserva_ibfk_3` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`),
   ADD CONSTRAINT `reserva_ibfk_4` FOREIGN KEY (`IdPagamento`) REFERENCES `pagamento` (`IdPagamento`);
 
@@ -311,13 +311,13 @@ ALTER TABLE `reserva`
 --
 ALTER TABLE `lugarfila`
   ADD CONSTRAINT `lugarfila_ibfk_1` FOREIGN KEY (`IdCliente`) REFERENCES `cliente` (`IdCliente`),
-  ADD CONSTRAINT `lugarfila_ibfk_2` FOREIGN KEY (`IdService`) REFERENCES `servico` (`IdServico`);
+  ADD CONSTRAINT `lugarfila_ibfk_2` FOREIGN KEY (`IdServico`) REFERENCES `servico` (`IdServico`);
 
 --
 -- Restrições para tabelas `profissional`
 --
 ALTER TABLE `profissional`
-  ADD CONSTRAINT `profissional_ibfk_1` FOREIGN KEY (`IdService`) REFERENCES `servico` (`IdServico`);
+  ADD CONSTRAINT `profissional_ibfk_1` FOREIGN KEY (`IdServico`) REFERENCES `servico` (`IdServico`);
 
 --
 -- Restrições para tabelas `especialidade_profissional`
@@ -333,11 +333,11 @@ ALTER TABLE `servico`
   ADD CONSTRAINT `servico_ibfk_1` FOREIGN KEY (`IdEspecialidade`) REFERENCES `especialidade` (`IdEspecialidade`);
 
 --
--- Restrições para tabelas `pacote_service`
+-- Restrições para tabelas `pacote_servico`
 --
-ALTER TABLE `pacote_service`
-  ADD CONSTRAINT `pacote_service_ibfk_1` FOREIGN KEY (`IdPacote`) REFERENCES `pacote` (`IdPacote`),
-  ADD CONSTRAINT `pacote_service_ibfk_2` FOREIGN KEY (`IdService`) REFERENCES `servico` (`IdServico`);
+ALTER TABLE `pacote_servico`
+  ADD CONSTRAINT `pacote_servico_ibfk_1` FOREIGN KEY (`IdPacote`) REFERENCES `pacote` (`IdPacote`),
+  ADD CONSTRAINT `pacote_servico_ibfk_2` FOREIGN KEY (`IdServico`) REFERENCES `servico` (`IdServico`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
