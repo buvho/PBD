@@ -1,66 +1,72 @@
-CREATE TABLE `Vaga` (
-  `idVaga` INT,
-  `idQuarto` INT,
-  `valor` DECIMAL,
-  `detalhes` TEXT,
-  `livre` tinyInt(1),
-  PRIMARY KEY (`idVaga`)
+CREATE TABLE Quarto (
+    idQuarto INT PRIMARY KEY AUTO_INCREMENT,
+    valor DECIMAL(10,2),
+    quantVagas INT,
+    temBanheiro TINYINT(1),
+    vazia TINYINT(1)
 );
 
-CREATE TABLE `Quarto` (
-  `idQuarto` INT,
-  `valor` DECIMAL,
-  `quantVagas` INT,
-  `temBanheiro` tinyint(1),
-  `Vazio` tinyint(1),
-  PRIMARY KEY (`idQuarto`),
-  FOREIGN KEY (`idQuarto`) REFERENCES `Vaga`(`idVaga`)
+CREATE TABLE Vaga (
+    idVaga INT PRIMARY KEY AUTO_INCREMENT,
+    idQuarto INT,
+    valor DECIMAL(10,2),
+    detalhes TEXT,
+    livre TINYINT(1),
+    FOREIGN KEY (idQuarto) REFERENCES Quarto(idQuarto)
 );
 
-CREATE TABLE `Pagamento` (
-  `idPagamento` INT,
-  `idUsuario` INT,
-  `Valor` INT,
-  `Horario` DATETIME,
-  PRIMARY KEY (`idPagamento`)
+CREATE TABLE Usuario (
+    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    senha VARCHAR(100),
+    celular VARCHAR(20),
+    email VARCHAR(100)
 );
 
-CREATE TABLE `Usuario` (
-  `idUsuario` INT,
-  `nome` VARCHAR(30),
-  `senha` VARCHAR(30),
-  `celular` VARCHAR(20),
-  `email` VARCHAR(50),
-  PRIMARY KEY (`idUsuario`),
-  FOREIGN KEY (`email`) REFERENCES `Pagamento`(`idPagamento`)
+CREATE TABLE Pagamento (
+    idPagamento INT PRIMARY KEY AUTO_INCREMENT,
+    idUsuario INT,
+    valor DECIMAL(10,2),
+    horario DATETIME,
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
-CREATE TABLE `Reserva` (
-  `idReserva` INT,
-  `idVaga` INT,
-  `idUsuario` INT,
-  `idPagamento` INT,
-  `horarioInicio` DATETIME,
-  `horarioFinal` DATETIME,
-  PRIMARY KEY (`idReserva`),
-  FOREIGN KEY (`idUsuario`) REFERENCES `Usuario`(`nome`)
+CREATE TABLE Reserva (
+    idReserva INT PRIMARY KEY AUTO_INCREMENT,
+    idVaga INT,
+    idUsuario INT,
+    idPagamento INT,
+    horarioInicial DATETIME,
+    horarioFinal DATETIME,
+    FOREIGN KEY (idVaga) REFERENCES Vaga(idVaga),
+    FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario),
+    FOREIGN KEY (idPagamento) REFERENCES Pagamento(idPagamento)
 );
 
-CREATE TABLE `Tag` (
-  `idTag` INT,
-  `idTipoTag` INT,
-  `nome` VARCHAR(20),
-  PRIMARY KEY (`idTag`)
+CREATE TABLE TipoTag (
+    idTipoTag INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100)
 );
 
-CREATE TABLE `VagaTag` (
-  `idTag` INT,
-  `idVaga` INT,
-  PRIMARY KEY (`idTag`)
+CREATE TABLE Tag (
+    idTag INT PRIMARY KEY AUTO_INCREMENT,
+    idTipoTag INT,
+    nome VARCHAR(100),
+    FOREIGN KEY (idTipoTag) REFERENCES TipoTag(idTipoTag)
 );
 
-CREATE TABLE `TipoTag` (
-  `idTipoTag` INT,
-  `nome` VARCHAR(20),
-  PRIMARY KEY (`idTipoTag`)
+CREATE TABLE Vaga_Tag (
+    idVagaTag INT PRIMARY KEY AUTO_INCREMENT,
+    idTag INT,
+    idVaga INT,
+    FOREIGN KEY (idTag) REFERENCES Tag(idTag),
+    FOREIGN KEY (idVaga) REFERENCES Vaga(idVaga)
+);
+
+CREATE TABLE Quarto_Tag (
+    idVagaTag INT PRIMARY KEY AUTO_INCREMENT,
+    idTag INT,
+    idQuarto INT,
+    FOREIGN KEY (idTag) REFERENCES Tag(idTag),
+    FOREIGN KEY (idQuarto) REFERENCES Quarto(idQuarto)
 );

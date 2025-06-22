@@ -1,9 +1,27 @@
+UPDATE Quarto
+SET valor = 550.00
+WHERE idQuarto = 1;
 
-UPDATE Vaga SET idQuarto = ?, valor = ?, detalhes = ?, livre = ? WHERE idVaga = ?;
-UPDATE Quarto SET valor = ?, quantVagas = ?, temBanheiro = ?, Vazio = ? WHERE idQuarto = ?;
-UPDATE Pagamento SET idUsuario = ?, Valor = ?, Horario = ? WHERE idPagamento = ?;
-UPDATE Usuario SET nome = ?, senha = ?, celular = ?, email = ? WHERE idUsuario = ?;
-UPDATE Reserva SET idVaga = ?, idUsuario = ?, idPagamento = ?, horarioInicio = ?, horarioFinal = ? WHERE idReserva = ?;
-UPDATE Tag SET idTipoTag = ?, nome = ? WHERE idTag = ?;
-UPDATE VagaTag SET idVaga = ? WHERE idTag = ?;
-UPDATE TipoTag SET nome = ? WHERE idTipoTag = ?;
+UPDATE Vaga
+SET livre = 0
+WHERE idVaga = 1;
+
+UPDATE Usuario
+SET email = 'joao.silva@email.com'
+WHERE idUsuario = 1;
+
+UPDATE Pagamento
+SET valor = 180.00
+WHERE idPagamento = 1;
+
+UPDATE Reserva
+SET horarioInicial = '2025-06-12 12:00:00', horarioFinal = '2025-06-22 12:00:00'
+WHERE idReserva = 1;
+
+UPDATE Tag
+SET nome = 'Proibido Fumar'
+WHERE idTag = 3;
+
+UPDATE TipoTag
+SET nome = 'Regras da Casa'
+WHERE idTipoTag = 2;

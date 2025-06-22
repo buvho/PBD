@@ -1,8 +1,23 @@
-DELETE FROM Vaga WHERE idVaga = ?;
-DELETE FROM Quarto WHERE idQuarto = ?;
-DELETE FROM Pagamento WHERE idPagamento = ?;
-DELETE FROM Usuario WHERE idUsuario = ?;
-DELETE FROM Reserva WHERE idReserva = ?;
-DELETE FROM Tag WHERE idTag = ?;
-DELETE FROM VagaTag WHERE idTag = ? AND idVaga = ?;
-DELETE FROM TipoTag WHERE idTipoTag = ?;
+DELETE FROM Vaga_Tag
+WHERE idVaga = 2 AND idTag = 3;
+
+DELETE FROM Reserva
+WHERE idReserva = 1;
+
+DELETE FROM Pagamento
+WHERE idPagamento = 1;
+
+DELETE FROM Usuario
+WHERE idUsuario = 1;
+
+DELETE FROM Vaga
+WHERE idVaga = 3;
+
+DELETE FROM Quarto
+WHERE idQuarto = 2;
+
+DELETE FROM Tag
+WHERE idTag = 3;
+
+DELETE FROM TipoTag
+WHERE idTipoTag = 2;
