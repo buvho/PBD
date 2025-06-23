@@ -17,7 +17,7 @@ INSERT INTO Pagamento (idUsuario, valor, horario) VALUES
 
 INSERT INTO Reserva (idVaga, idUsuario, idPagamento, horarioInicial, horarioFinal) VALUES
 (2, 1, 1, '2025-06-10 12:00:00', '2025-06-20 12:00:00'),
-(3, 2, 2, '2025-06-15 03:00:00', '2025-06-25 12:00:00');
+(3, 2, 2, '2025-06-15 12:00:00', '2025-06-25 12:00:00');
 
 INSERT INTO TipoTag (nome) VALUES
 ('Comodidades'),
