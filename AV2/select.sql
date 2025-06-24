@@ -60,7 +60,7 @@ WHERE Tag.idTag = 1;
 
 SELECT * FROM Vaga
 WHERE Vaga.idVaga NOT IN (
-    SELECT idVaga
+    SELECT ReservaVaga.idVaga
     FROM ReservaVaga 
     JOIN Reserva ON Reserva.idReserva = ReservaVaga.idReserva
     WHERE horarioInicial < '2025-06-30 12:00:00' AND 
