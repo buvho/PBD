@@ -36,7 +36,6 @@ SELECT * FROM Tag WHERE idTipoTag = 1;
 
 SELECT * FROM Reserva
 
---mostrar todas as vagas com alguma tag
 SELECT
     Vaga.idVaga,
     Vaga.idQuarto,
@@ -48,7 +47,6 @@ JOIN Vaga_Tag ON Vaga.idVaga = Vaga_Tag.idVaga
 JOIN Tag ON Vaga_Tag.idTag = Tag.idTag
 WHERE Tag.idTag = 1;
 
---mostar todos os quartos com alguma tag
 SELECT
     Quarto.idQuarto,
     Quarto.valor,
@@ -60,7 +58,6 @@ JOIN Quarto_Tag ON Quarto.idQuarto = Quarto_Tag.idQuarto
 JOIN Tag ON Vaga_Tag.idTag = Tag.idTag
 WHERE Tag.idTag = 1;
 
---Mostra todos as vagas livres em um determinado periodo de tempo
 SELECT * FROM Vaga
 WHERE livre = 1 AND Vaga.idVaga NOT IN (
     SELECT idVaga
