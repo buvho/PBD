@@ -1,6 +1,6 @@
-INSERT INTO Quarto (valor, quantVagas, temBanheiro, vazia) VALUES
-(500.00, 3, 1, 0),
-(300.00, 2, 0, 1);
+INSERT INTO Quarto (valor, quantVagas, detalhes, vazia) VALUES
+(500.00, 4, "Quarto simples,pequeno e modesto", 0),
+(300.00, 12, "Quarto grande e espaçoso", 1);
 
 INSERT INTO Vaga (IdQuarto.valor, detalhes, livre) VALUES
 (1,180.00, 'Vaga do lado da janela e armário', 1),
