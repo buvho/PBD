@@ -10,10 +10,6 @@ UPDATE Usuario
 SET email = 'joao.silva@email.com'
 WHERE idUsuario = 1;
 
-UPDATE Pagamento
-SET valor = 180.00
-WHERE idPagamento = 1;
-
 UPDATE Reserva
 SET horarioInicial = '2025-06-12 12:00:00', horarioFinal = '2025-06-22 12:00:00'
 WHERE idReserva = 1;
