@@ -66,3 +66,12 @@ WHERE Vaga.idVaga NOT IN (
     WHERE horarioInicial < '2025-06-30 12:00:00' AND 
     horarioFinal > '2025-06-25 12:00:00'
 );
+
+SELECT * FROM Vaga
+WHERE Vaga.idVaga IN (
+    SELECT ReservaVaga.idVaga
+    FROM ReservaVaga 
+    JOIN Reserva ON Reserva.idReserva = ReservaVaga.idReserva
+    WHERE horarioInicial > '2025-06-30 12:00:00' AND 
+    horarioFinal < '2025-06-25 12:00:00'
+);
