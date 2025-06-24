@@ -59,7 +59,7 @@ JOIN Tag ON Vaga_Tag.idTag = Tag.idTag
 WHERE Tag.idTag = 1;
 
 SELECT * FROM Vaga
-WHERE livre = 1 AND Vaga.idVaga NOT IN (
+WHERE Vaga.idVaga NOT IN (
     SELECT idVaga
     FROM ReservaVaga 
     JOIN Reserva ON Reserva.idReserva = ReservaVaga.idReserva
