@@ -70,3 +70,11 @@ CREATE TABLE Quarto_Tag (
     FOREIGN KEY (idTag) REFERENCES Tag(idTag),
     FOREIGN KEY (idQuarto) REFERENCES Quarto(idQuarto)
 );
+
+CREATE TABLE Reserva_Vaga (
+    idReservaVaga INT PRIMARY KEY AUTO_INCREMENT,
+    idReserva INT,
+    idVaga INT,
+    FOREIGN KEY (idReserva) REFERENCES Reserva(idReserva),
+    FOREIGN KEY (idQuarto) REFERENCES Quarto(idQuarto)
+);
