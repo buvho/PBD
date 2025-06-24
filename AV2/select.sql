@@ -37,22 +37,22 @@ SELECT * FROM Tag WHERE idTipoTag = 1;
 SELECT * FROM Reserva
 
 SELECT
-    Vaga.idVaga,
-    Vaga.idQuarto,
-    Vaga.valor,
-    Vaga.detalhes,
-    Vaga.livre
+    idVaga,
+    idQuarto,
+    valor,
+    detalhes,
+    livre
 FROM Vaga
 JOIN Vaga_Tag ON Vaga.idVaga = Vaga_Tag.idVaga
 JOIN Tag ON Vaga_Tag.idTag = Tag.idTag
 WHERE Tag.idTag = 1;
 
 SELECT
-    Quarto.idQuarto,
-    Quarto.valor,
-    Quarto.quantVagas,
-    Quarto.temBanheiro,
-    Quarto.vazia
+    idQuarto,
+    valor,
+    quantVagas,
+    temBanheiro,
+    vazia
 FROM Quarto
 JOIN Quarto_Tag ON Quarto.idQuarto = Quarto_Tag.idQuarto
 JOIN Tag ON Vaga_Tag.idTag = Tag.idTag
