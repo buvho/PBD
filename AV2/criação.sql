@@ -1,9 +1,7 @@
 CREATE TABLE Quarto (
     idQuarto INT PRIMARY KEY AUTO_INCREMENT,
     valor DECIMAL(10,2),
-    quantVagas INT,
-    temBanheiro TINYINT(1),
-    vazia TINYINT(1)
+    detalhes TEXT
 );
 
 CREATE TABLE Vaga (
