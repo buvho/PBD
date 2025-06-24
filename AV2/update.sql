@@ -19,7 +19,7 @@ SET horarioInicial = '2025-06-12 12:00:00', horarioFinal = '2025-06-22 12:00:00'
 WHERE idReserva = 1;
 
 UPDATE Tag
-SET nome = 'Proibido Fumar'
+SET nome = 'Cama perto da tomada'
 WHERE idTag = 3;
 
 UPDATE TipoTag
