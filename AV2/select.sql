@@ -52,7 +52,7 @@ JOIN Tag ON Vaga_Tag.idTag = Tag.idTag
 WHERE Tag.idTag = 1;
 
 --mostar todos os quartos com alguma tag
-SELECT DISTINCT
+SELECT
     Quarto.idQuarto,
     Quarto.valor,
     Quarto.quantVagas,
