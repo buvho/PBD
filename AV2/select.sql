@@ -68,8 +68,9 @@ WHERE Tag.idTag = 1;
 --Mostra todos as vagas livres em um determinado periodo de tempo
 SELECT * FROM Vaga
 WHERE livre = 1 AND Vaga.idVaga NOT IN (
-    SELECT Reserva.idVaga
-    FROM Reserva
+    SELECT idVaga
+    FROM ReservaVaga 
+    JOIN Reserva ON Reserva.idReserva = ReservaVaga.idReserva
     WHERE horarioInicial < '2025-06-30 12:00:00' AND 
     horarioFinal > '2025-06-25 12:00:00'
 );
