@@ -76,5 +76,5 @@ CREATE TABLE Reserva_Vaga (
     idReserva INT,
     idVaga INT,
     FOREIGN KEY (idReserva) REFERENCES Reserva(idReserva),
-    FOREIGN KEY (idQuarto) REFERENCES Quarto(idQuarto)
+    FOREIGN KEY (idVaga) REFERENCES Vaga(idVaga)
 );
